@@ -8,6 +8,9 @@
 
 import UIKit
 
+// Airship
+import AirshipKit
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +19,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
+        // or set runtime properties here.
+        let config = UAConfig.defaultConfig()
+        
+        // You can also programmatically override the plist values:
+        // config.developmentAppKey = "YourKey"
+        // etc.
+        
+        // Call takeOff (which creates the UAirship singleton)
+        UAirship.takeOff(config)
+        
+        // Urban Airship
+        let channelID = UAirship.push().channelID
+        print("My Application Channel ID: \(channelID)")
+
+        
+        // Set the notification types required for the app (optional). This value defaults
+        // to badge, alert and sound, so it's only necessary to set it if you want
+        // to add or remove types.
+        UAirship.push().userNotificationTypes = ([UIUserNotificationType.Alert , UIUserNotificationType.Badge , UIUserNotificationType.Sound])
+
+        // User notifications will not be enabled until userPushNotificationsEnabled is
+        // set true on UAPush. Once enabled, the setting will be persisted and the user
+        // will be prompted to allow notifications. Normally, you should wait for a more appropriate
+        // time to enable push to increase the likelihood that the user will accept
+        // notifications.
+        UAirship.push().userPushNotificationsEnabled = true
+        
         return true
     }
 

@@ -14,6 +14,11 @@
 		1183E1371D18AE9200B8E115 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1183E1351D18AE9200B8E115 /* LaunchScreen.storyboard */; };
 		1183E1421D18AE9300B8E115 /* UrbanAirshipTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1183E1411D18AE9300B8E115 /* UrbanAirshipTestTests.swift */; };
 		1183E14D1D18AE9300B8E115 /* UrbanAirshipTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1183E14C1D18AE9300B8E115 /* UrbanAirshipTestUITests.swift */; };
+		1183E15C1D18B11A00B8E115 /* Airship in Resources */ = {isa = PBXBuildFile; fileRef = 1183E15A1D18B11A00B8E115 /* Airship */; };
+		1183E15D1D18B11A00B8E115 /* AirshipKit in Resources */ = {isa = PBXBuildFile; fileRef = 1183E15B1D18B11A00B8E115 /* AirshipKit */; };
+		1183E1641D18B15B00B8E115 /* AirshipKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1183E1631D18B14300B8E115 /* AirshipKit.framework */; };
+		1183E1651D18B15B00B8E115 /* AirshipKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1183E1631D18B14300B8E115 /* AirshipKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1183E16A1D18B1C000B8E115 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1183E1691D18B1C000B8E115 /* AirshipConfig.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +36,35 @@
 			remoteGlobalIDString = 1183E1281D18AE9200B8E115;
 			remoteInfo = UrbanAirshipTest;
 		};
+		1183E1621D18B14300B8E115 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1183E15E1D18B14300B8E115 /* AirshipKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 494DD9571B0EB677009C134E;
+			remoteInfo = AirshipKit;
+		};
+		1183E1661D18B15B00B8E115 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1183E15E1D18B14300B8E115 /* AirshipKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 494DD9561B0EB677009C134E;
+			remoteInfo = AirshipKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1183E1681D18B15B00B8E115 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1183E1651D18B15B00B8E115 /* AirshipKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1183E1291D18AE9200B8E115 /* UrbanAirshipTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbanAirshipTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +80,10 @@
 		1183E1481D18AE9300B8E115 /* UrbanAirshipTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UrbanAirshipTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1183E14C1D18AE9300B8E115 /* UrbanAirshipTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanAirshipTestUITests.swift; sourceTree = "<group>"; };
 		1183E14E1D18AE9300B8E115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1183E15A1D18B11A00B8E115 /* Airship */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Airship; sourceTree = "<group>"; };
+		1183E15B1D18B11A00B8E115 /* AirshipKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AirshipKit; sourceTree = "<group>"; };
+		1183E15E1D18B14300B8E115 /* AirshipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipKit.xcodeproj; path = AirshipKit/AirshipKit.xcodeproj; sourceTree = "<group>"; };
+		1183E1691D18B1C000B8E115 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1183E1641D18B15B00B8E115 /* AirshipKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +115,10 @@
 		1183E1201D18AE9200B8E115 = {
 			isa = PBXGroup;
 			children = (
+				1183E1691D18B1C000B8E115 /* AirshipConfig.plist */,
+				1183E15E1D18B14300B8E115 /* AirshipKit.xcodeproj */,
+				1183E15A1D18B11A00B8E115 /* Airship */,
+				1183E15B1D18B11A00B8E115 /* AirshipKit */,
 				1183E12B1D18AE9200B8E115 /* UrbanAirshipTest */,
 				1183E1401D18AE9300B8E115 /* UrbanAirshipTestTests */,
 				1183E14B1D18AE9300B8E115 /* UrbanAirshipTestUITests */,
@@ -125,6 +167,14 @@
 			path = UrbanAirshipTestUITests;
 			sourceTree = "<group>";
 		};
+		1183E15F1D18B14300B8E115 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1183E1631D18B14300B8E115 /* AirshipKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,10 +185,12 @@
 				1183E1251D18AE9200B8E115 /* Sources */,
 				1183E1261D18AE9200B8E115 /* Frameworks */,
 				1183E1271D18AE9200B8E115 /* Resources */,
+				1183E1681D18B15B00B8E115 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1183E1671D18B15B00B8E115 /* PBXTargetDependency */,
 			);
 			name = UrbanAirshipTest;
 			productName = UrbanAirshipTest;
@@ -193,6 +245,15 @@
 				TargetAttributes = {
 					1183E1281D18AE9200B8E115 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = XDMAFENL97;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					1183E13C1D18AE9200B8E115 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -215,6 +276,12 @@
 			mainGroup = 1183E1201D18AE9200B8E115;
 			productRefGroup = 1183E12A1D18AE9200B8E115 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1183E15F1D18B14300B8E115 /* Products */;
+					ProjectRef = 1183E15E1D18B14300B8E115 /* AirshipKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1183E1281D18AE9200B8E115 /* UrbanAirshipTest */,
@@ -224,14 +291,27 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		1183E1631D18B14300B8E115 /* AirshipKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AirshipKit.framework;
+			remoteRef = 1183E1621D18B14300B8E115 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		1183E1271D18AE9200B8E115 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1183E1371D18AE9200B8E115 /* LaunchScreen.storyboard in Resources */,
+				1183E15D1D18B11A00B8E115 /* AirshipKit in Resources */,
 				1183E1341D18AE9200B8E115 /* Assets.xcassets in Resources */,
+				1183E16A1D18B1C000B8E115 /* AirshipConfig.plist in Resources */,
 				1183E1321D18AE9200B8E115 /* Main.storyboard in Resources */,
+				1183E15C1D18B11A00B8E115 /* Airship in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +369,11 @@
 			isa = PBXTargetDependency;
 			target = 1183E1281D18AE9200B8E115 /* UrbanAirshipTest */;
 			targetProxy = 1183E1491D18AE9300B8E115 /* PBXContainerItemProxy */;
+		};
+		1183E1671D18B15B00B8E115 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AirshipKit;
+			targetProxy = 1183E1661D18B15B00B8E115 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -484,6 +569,7 @@
 				1183E1531D18AE9300B8E115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1183E1541D18AE9300B8E115 /* Build configuration list for PBXNativeTarget "UrbanAirshipTestTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +578,7 @@
 				1183E1561D18AE9300B8E115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1183E1571D18AE9300B8E115 /* Build configuration list for PBXNativeTarget "UrbanAirshipTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +587,7 @@
 				1183E1591D18AE9300B8E115 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
