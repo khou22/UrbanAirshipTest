@@ -23,12 +23,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5B-Ei-weS">
+                                <rect key="frame" x="277" y="536" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="triggerAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pK1-IZ-dOk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ibX-zH-9TF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Z8-po-6z9"/>
+                            <constraint firstItem="T5B-Ei-weS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eGQ-xb-PLO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="T5B-Ei-weS" secondAttribute="bottom" constant="34" id="h8q-sz-9AB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ManuelAlert" destination="T5B-Ei-weS" id="Chc-zU-Cou"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

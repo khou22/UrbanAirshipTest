@@ -42,5 +42,5 @@
  *
  */
 @interface UAIncomingInAppMessageAction : UAAction
-
+    
 @end

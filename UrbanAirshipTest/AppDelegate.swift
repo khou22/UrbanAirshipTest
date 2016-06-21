@@ -11,6 +11,7 @@ import UIKit
 // Airship
 import AirshipKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,13 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
-        // or set runtime properties here.
-        let config = UAConfig.defaultConfig()
+        print("You will not be able to receive push notifications in the simulator.")
+        // Right now push notifications are only setup when the app is running in the background
         
+        // Set log level for debugging config loading (optional)
+        // It will be set to the value in the loaded config upon takeOff
+        UAirship.setLogLevel(UALogLevel.Trace)
+        
+        // Populate AirshipConfig.plist with your app's info from
+        // https://go.urbanairship.com
+        // or set runtime properties here.
+        let config: UAConfig = UAConfig.defaultConfig()
         // You can also programmatically override the plist values:
         // config.developmentAppKey = "YourKey"
         // etc.
+        
         
         // Call takeOff (which creates the UAirship singleton)
         UAirship.takeOff(config)
@@ -35,20 +44,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let channelID = UAirship.push().channelID
         print("My Application Channel ID: \(channelID)")
 
-        
-        // Set the notification types required for the app (optional). This value defaults
-        // to badge, alert and sound, so it's only necessary to set it if you want
-        // to add or remove types.
-        UAirship.push().userNotificationTypes = ([UIUserNotificationType.Alert , UIUserNotificationType.Badge , UIUserNotificationType.Sound])
-
-        // User notifications will not be enabled until userPushNotificationsEnabled is
-        // set true on UAPush. Once enabled, the setting will be persisted and the user
-        // will be prompted to allow notifications. Normally, you should wait for a more appropriate
-        // time to enable push to increase the likelihood that the user will accept
-        // notifications.
+        /*
+         User notifications will not be enabled until
+         userPushNotificationsEnabled is set YES on UAPush. Once enabled,
+         the setting will be persisted and the user will be prompted to
+         allow notifications. Normally, you should wait for a more
+         appropriate time to enable push to increase the likelihood that
+         the user will accept notifications.
+         */
         UAirship.push().userPushNotificationsEnabled = true
         
+        /* Open the system settings app directly to this application (on iOS 8+) */
+//        UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+        
+        
+        // Reference: https://thatthinginswift.com/remote-notifications/
+        let settings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+        print("*** Ready to receive notifications... ***")
+        
         return true
+    }
+    
+    // implemented in your application delegate
+    // Reference: https://thatthinginswift.com/remote-notifications/
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
+        print("Got token data! \(deviceToken)")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
+        print("Couldn't register: \(error)")
+    }
+    
+    // Good reference for when these are called: http://samwize.com/2015/08/07/how-to-handle-remote-notification-with-background-mode-enabled/
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        // Called in: Not Running
+        print("Received remote notification")
+        let alertController = UIAlertController(title: "Alert", message:
+            "Received remote notification", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))  // Set button option
+        
+        self.window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        // Called in: Foreground, Background, Suspended, when app is opened after not running at all and receiving an alert
+        print("*** Received remote notification. User info:")
+        print(userInfo)
+//        let object = userInfo[0]!.valueForKey("aps")
+//        let message: String = String(object!.valueForKey("alert"))
+        let alertController = UIAlertController(title: "Alert", message:
+            "Received remote notification", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))  // Set button option
+        
+        self.window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
     }
 
     func applicationWillResignActive(application: UIApplication) {
