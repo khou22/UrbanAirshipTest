@@ -68,13 +68,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    // Notification action callback
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?,forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        print("Received actionable notification")
+        print(identifier)
+        print(userInfo)
+    }
+    
     // implemented in your application delegate
     // Reference: https://thatthinginswift.com/remote-notifications/
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("Got token data! \(deviceToken)")
     }
     
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Couldn't register: \(error)")
     }
     
